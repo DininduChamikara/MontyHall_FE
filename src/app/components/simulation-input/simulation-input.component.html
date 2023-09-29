@@ -1,0 +1,14 @@
+<div>
+    <h3>Simulate</h3>
+    <p>Run simulation 
+        <input type="number" [(ngModel)]="iterationCount">
+        times 
+        <select [(ngModel)]="isKeepSelection">
+            <option [ngValue]="true">Keep the selection</option>
+            <option [ngValue]="false">Change the selection</option>
+        </select>
+    </p>
+
+    <button (click)="playButtonClick()">Play</button>
+    
+</div>
