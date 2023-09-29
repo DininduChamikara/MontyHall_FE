@@ -1,9 +1,9 @@
-<div>
+<div class="main">
     <div>
         <app-header></app-header>
     </div>
     <div>
-        <app-iteration-count></app-iteration-count>
+        <app-iteration-count [iterationNo]="iterationNo"></app-iteration-count>
     </div>
     <div class="door-box">
         <div *ngFor="let door of doors">
@@ -11,12 +11,15 @@
         </div>
     </div>
     <div>
-        <app-iteration-details></app-iteration-details>
+        <p *ngFor="let door of doors">
+            [ Door No: {{door.id}}, Status: {{getDoorStatusStr(door.status)}}, Obj: {{door.type}} ]
+        </p>
+        <app-iteration-details *ngIf="wonType" [type]="wonType"></app-iteration-details>
     </div>
     <div>
         <app-simulation-input (onPlayClicked)="onInputPlayClick($event)"></app-simulation-input>
     </div>
     <div>
-        <app-simulation-output [carWinPercentage]="10"></app-simulation-output>
+        <app-simulation-output [carWinPercentage]="carWinPercentage" [goatWinPercentage]="goatWinPercentage"></app-simulation-output>
     </div>
 </div>
