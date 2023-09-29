@@ -1,14 +1,14 @@
-<div>
-    <h3>Simulate</h3>
+<div class="box">
+    <h3>Simulation</h3>
     <p>Run simulation 
-        <input type="number" [(ngModel)]="iterationCount">
+        <input class="number-input" type="number" min="1" [(ngModel)]="iterationCount">
         times 
-        <select [(ngModel)]="isKeepSelection">
+        <select class="drop-down" [(ngModel)]="isKeepSelection">
             <option [ngValue]="true">Keep the selection</option>
             <option [ngValue]="false">Change the selection</option>
         </select>
     </p>
 
-    <button (click)="playButtonClick()">Play</button>
+    <button [disabled]="userSelection == -1" (click)="playButtonClick()">Play</button>
     
 </div>

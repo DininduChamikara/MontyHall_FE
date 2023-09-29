@@ -1,11 +1,28 @@
-.door-box{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    gap: 30px;
+* {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.bg {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.door-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  gap: 30px;
 }
 
 .main {
-    width: fit-content;
-    margin: 0px auto;
+  padding: 20px;
+  width: fit-content;
+  margin: auto;
+}
+
+.hide {
+  visibility: 0;
 }

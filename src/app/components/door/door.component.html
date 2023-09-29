@@ -1,6 +1,10 @@
 <div class="box" (click)="doorClicked()">
-    <img class="img" [src]="imagePath" alt="">
-    <div class="door" [ngClass]="{
-        'open': isDoorOpen()
-    }"></div>
+  <img class="img" [src]="imagePath" alt="" />
+  <div
+    class="door"
+    [ngClass]="{
+      open: isDoorOpen()
+    }"
+  >
+  </div>
 </div>

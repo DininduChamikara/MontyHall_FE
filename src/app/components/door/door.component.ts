@@ -7,6 +7,7 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
+import { DelayTimes } from 'src/app/constants/delay-times';
 import { DoorActions } from 'src/app/constants/door-actions';
 import { DoorTypes } from 'src/app/constants/door-types';
 
@@ -34,7 +35,7 @@ export class DoorComponent implements OnInit, OnChanges {
         changes['action'].currentValue == DoorActions.CLOSE &&
         changes['action'].previousValue == DoorActions.OPEN
       ) {
-        setTimeout(() => this.setImagePath(), 1500);
+        setTimeout(() => this.setImagePath(), DelayTimes.IMAGE_CHANGE_DELAY);
       } else {
         this.setImagePath();
       }

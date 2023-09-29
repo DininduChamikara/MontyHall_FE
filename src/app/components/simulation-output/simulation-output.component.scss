@@ -1,10 +1,23 @@
 .box{
+    margin-top: 20px;
+    background: #AED2FF;
+    border-radius: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
 
     div{
         text-align: center;
+        padding-top:5px;
+        
+        p{
+            font-weight: bold;
+        }
+        
+        p:nth-child(2){
+            font-size: 25px;
+            color: #9400FF;
+        }
     }
 }
 

@@ -1,3 +1,3 @@
 export enum DoorTypes {
-    GOAT, CAR
+    GOAT, CAR, OTHER
 }

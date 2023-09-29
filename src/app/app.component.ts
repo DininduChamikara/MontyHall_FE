@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
+import { concatMap, delay, from, map, mergeMap, of, tap } from 'rxjs';
 import { SimulationInputClickevent } from './components/simulation-input/simulation-input-clickevent.interface';
+import { DelayTimes } from './constants/delay-times';
+import { DoorActions } from './constants/door-actions';
+import { DoorTypes } from './constants/door-types';
+import { ApiResponse } from './dto/api-response';
 import { Door } from './models/door';
 import { ApiService } from './services/api.service';
-import { concatMap, delay, from, map, mergeMap, of, pairs, tap } from 'rxjs';
-import { ApiResponse } from './dto/api-response';
 import { DoorDto } from './types/types';
-import { DoorTypes } from './constants/door-types';
-import { DoorActions } from './constants/door-actions';
+import {Input} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +16,8 @@ import { DoorActions } from './constants/door-actions';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  @Input() userSelection = -1;
+
   constructor(private apiService: ApiService) {}
 
   door1 = new Door(0);
@@ -22,7 +26,7 @@ export class AppComponent {
 
   doors = [this.door1, this.door2, this.door3];
 
-  userSelection: number = -1;
+  // userSelection: number = -1;
 
   carWinPercentage: number = 0;
   goatWinPercentage: number = 0;
@@ -56,12 +60,13 @@ export class AppComponent {
           objList.unshift(['iteration', (index + 1).toString()]);
           return from(objList);
         }),
-        concatMap((value) => of(value).pipe(delay(2000))),
+        concatMap((value) => of(value).pipe(delay(DelayTimes.ITERATION_DELAY))),
         tap({
           next: (res) => {
             switch (res[0]) {
               case 'iteration':
-                this.wonType = undefined;
+                // this.wonType = undefined;
+                this.wonType = DoorTypes.OTHER;
                 this.iterationNo = parseInt(res[1].toString());
                 break;
               case 'initialState':
@@ -112,7 +117,7 @@ export class AppComponent {
     this.carWinPercentage = parseFloat(
       ((value.carWinCount / event.iterationCount) * 100).toFixed(1)
     );
-    this.goatWinPercentage = 100 - this.carWinPercentage;
+    this.goatWinPercentage = parseFloat((100 - this.carWinPercentage).toFixed(1));
   }
 
   private getDoorType(type: string) {

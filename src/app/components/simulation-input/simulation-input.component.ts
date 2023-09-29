@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { SimulationInputClickevent } from './simulation-input-clickevent.interface';
 
 @Component({
@@ -7,6 +7,7 @@ import { SimulationInputClickevent } from './simulation-input-clickevent.interfa
   styleUrls: ['./simulation-input.component.scss']
 })
 export class SimulationInputComponent {
+  @Input() userSelection:number = -1; 
   @Output() onPlayClicked = new EventEmitter<SimulationInputClickevent>();
 
   iterationCount: number = 1;
